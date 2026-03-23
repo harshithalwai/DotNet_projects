@@ -1,0 +1,73 @@
+# =========================
+# Visual Studio
+# =========================
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# =========================
+# Build Results
+# =========================
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# =========================
+# ASP.NET Specific
+# =========================
+*.publishsettings
+*.pubxml
+*.azurePubxml
+
+# IIS Express
+.vs/
+IISExpress/
+
+# =========================
+# NuGet
+# =========================
+packages/
+*.nupkg
+*.snupkg
+
+# Keep this if using packages.config
+!packages/build/
+
+# =========================
+# Node (if you ever add frontend)
+# =========================
+node_modules/
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs & Temp
+# =========================
+*.log
+*.tmp
+
+# =========================
+# Database / Local Files
+# =========================
+*.mdf
+*.ldf
+
+# =========================
+# Rider / VS Code (optional)
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# Others
+# =========================
+*.cache
+*.pdb
+*.exe
+*.dll
