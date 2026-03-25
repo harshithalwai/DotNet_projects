@@ -1,195 +1,157 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMst.master.cs" Inherits="Admin_AdminMst" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminGreen.master.cs" Inherits="AdminGreen" %>
 
 <!DOCTYPE html>
 <html>
 <head runat="server">
-    <title>School Management Project</title>
-    <meta charset="UTF-8" />
+    <title>School Management</title>
+    <meta charset="utf-8" />
 
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-
-    <!-- jQuery (IMPORTANT) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Fontawesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
     <!-- CSS -->
-    <link href="Content/styles.css" rel="stylesheet" />
+    <link href="Content/green-admin.css" rel="stylesheet" />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
-        $(document).ready(function () {
+        $(function () {
 
-            // Sidebar active class
-            $(".siderbar_menu li").click(function () {
-                $(".siderbar_menu li").removeClass("active");
-                $(this).addClass("active");
+            $(".menu-toggle").click(function () {
+                $(".sidebar").toggleClass("collapsed");
+                $(".main").toggleClass("expanded");
             });
 
-            // Accordion menu toggle
-            $(".siderbar_menu li > a").click(function (e) {
-
-                var parent = $(this).parent();
-
-                if (parent.find(".accordion").length > 0) {
-                    e.preventDefault();
-                    parent.toggleClass("active");
-                }
-
-            });
-
-            // hamburger
-            $(".hamburger").click(function () {
-                $(".wrapper").addClass("active");
-            });
-
-            // close sidebar
-            $(".close, .bg_shadow").click(function () {
-                $(".wrapper").removeClass("active");
+            $(".menu li").click(function () {
+                $(this).toggleClass("open");
             });
 
         });
     </script>
 
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
-
+    <asp:ContentPlaceHolder ID="head" runat="server" />
 </head>
 
 <body>
-<form id="form1" runat="server">
 
-<div class="wrapper">
+<form runat="server">
 
-<!-- SIDEBAR START -->
+<div class="layout">
+
+<!-- SIDEBAR -->
 <div class="sidebar">
-<div class="bg_shadow"></div>
-
-<div class="sidebar_inner">
-
-<div class="close">
-<i class="fas fa-times"></i>
-</div>
-
-<div class="profile_info">
-<div class="profile_img">
-<img src="../Image/logo.png" />
-</div>
-
-<div class="profile_data">
-<p class="name">Admin Module</p>
-<span><i class="fas fa-map-marker-alt"></i> Mumbai, India</span>
-</div>
-</div>
-
-<ul class="siderbar_menu">
-
-<li>
-<a href="../Admin/AdminHome.aspx">
-<div class="icon"><i class="fas fa-home"></i></div>
-<div class="title">Home</div>
-</a>
-</li>
-
-<li>
-<a href="#">
-<div class="icon"><i class="fas fa-hotel"></i></div>
-<div class="title">Class</div>
-<div class="arrow"><i class="fas fa-chevron-down"></i></div>
-</a>
-
-<ul class="accordion">
-<li><a href="../Admin/AddClass.aspx">Add Class</a></li>
-<li><a href="../Admin/ClassFees.aspx">Class Fees</a></li>
-</ul>
-</li>
-
-<li>
-<a href="../Admin/Subject.aspx">
-<div class="icon"><i class="fas fa-book"></i></div>
-<div class="title">Subjects</div>
-</a>
-</li>
-
-<li>
-<a href="#">
-<div class="icon"><i class="fas fa-user-tie"></i></div>
-<div class="title">Teachers</div>
-<div class="arrow"><i class="fas fa-chevron-down"></i></div>
-</a>
-
-<ul class="accordion">
-<li><a href="../Admin/Teacher.aspx">Add Teachers</a></li>
-<li><a href="../Admin/TeacherSubject.aspx">Teachers Subject</a></li>
-<li><a href="../Admin/Expense.aspx">Add Expense</a></li>
-<li><a href="../Admin/ExpenseDetails.aspx">Expense Details</a></li>
-</ul>
-</li>
-
-<li>
-<a href="#">
-<div class="icon"><i class="fas fa-user-graduate"></i></div>
-<div class="title">Students</div>
-<div class="arrow"><i class="fas fa-chevron-down"></i></div>
-</a>
-
-<ul class="accordion">
-<li><a href="../Admin/Student.aspx">Add Students</a></li>
-<li><a href="../Admin/StudAttendanceDetails.aspx">Attendance Details</a></li>
-</ul>
-</li>
-
-<li>
-<a href="#">
-<div class="icon"><i class="fas fa-clipboard-list"></i></div>
-<div class="title">Examination</div>
-<div class="arrow"><i class="fas fa-chevron-down"></i></div>
-</a>
-
-<ul class="accordion">
-<li><a href="../Admin/Marks.aspx">Add Marks</a></li>
-<li><a href="../Admin/MarkDetails.aspx">Marks Details</a></li>
-</ul>
-</li>
-
-<li>
-<a href="#">
-<div class="icon"><i class="fas fa-calendar-alt"></i></div>
-<div class="title">Attendance</div>
-<div class="arrow"><i class="fas fa-chevron-down"></i></div>
-</a>
-
-<ul class="accordion">
-<li><a href="../Admin/EmployeeAttendance.aspx">Employee Attendance</a></li>
-<li><a href="../Admin/EmpAttendanceDetails.aspx">Employee Details</a></li>
-</ul>
-</li>
-
-</ul>
-
-<div class="logout_btn">
-<asp:LinkButton ID="btnLogOut" runat="server" CausesValidation="false">Logout</asp:LinkButton>
-</div>
-
-</div>
-</div>
-<!-- SIDEBAR END -->
-
-
-<!-- MAIN CONTAINER -->
-<div class="main_container">
-
-<div class="navbar">
-
-<div class="hamburger">
-<i class="fas fa-bars"></i>
-</div>
 
 <div class="logo">
-<a href="#">Mithila English High School</a>
+<i class="fa fa-school"></i>
+<span>School Admin</span>
+</div>
+
+<ul class="menu">
+
+<li>
+<a href="AdminHome.aspx">
+<i class="fa fa-home"></i>
+<span>Dashboard</span>
+</a>
+</li>
+
+<li>
+<a href="#">
+<i class="fa fa-layer-group"></i>
+<span>Class</span>
+<i class="fa fa-chevron-down arrow"></i>
+</a>
+
+<ul class="submenu">
+<li><a href="AddClass.aspx">Add Class</a></li>
+<li><a href="ClassFees.aspx">Class Fees</a></li>
+</ul>
+</li>
+
+<li>
+<a href="Subject.aspx">
+<i class="fa fa-book"></i>
+<span>Subjects</span>
+</a>
+</li>
+
+<li>
+<a href="#">
+<i class="fa fa-chalkboard-teacher"></i>
+<span>Teachers</span>
+<i class="fa fa-chevron-down arrow"></i>
+</a>
+
+<ul class="submenu">
+<li><a href="Teacher.aspx">Add Teacher</a></li>
+<li><a href="TeacherSubject.aspx">Teacher Subject</a></li>
+</ul>
+</li>
+
+<li>
+<a href="#">
+<i class="fa fa-user-graduate"></i>
+<span>Students</span>
+<i class="fa fa-chevron-down arrow"></i>
+</a>
+
+<ul class="submenu">
+<li><a href="Student.aspx">Add Student</a></li>
+<li><a href="StudAttendanceDetails.aspx">Attendance</a></li>
+</ul>
+</li>
+
+<li>
+<a href="#">
+<i class="fa fa-file-alt"></i>
+<span>Examination</span>
+<i class="fa fa-chevron-down arrow"></i>
+</a>
+
+<ul class="submenu">
+<li><a href="Marks.aspx">Add Marks</a></li>
+<li><a href="MarkDetails.aspx">Mark Details</a></li>
+</ul>
+</li>
+
+</ul>
+
+<div class="logout">
+<asp:LinkButton ID="btnLogout" runat="server">
+<i class="fa fa-sign-out-alt"></i> Logout
+</asp:LinkButton>
 </div>
 
 </div>
 
-<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- TOPBAR -->
+<div class="topbar">
+
+<div class="menu-toggle">
+<i class="fa fa-bars"></i>
+</div>
+
+<div class="title">
+Mithila English High School
+</div>
+
+<div class="user">
+<i class="fa fa-user-circle"></i>
+Admin
+</div>
+
+</div>
+
+<!-- PAGE CONTENT -->
+<div class="content">
+<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"/>
+</div>
 
 </div>
 
@@ -198,3 +160,171 @@
 </form>
 </body>
 </html>
+
+
+
+
+* {
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI;
+}
+
+body{
+background:#f5fbf7;
+}
+
+/* layout */
+.layout{
+display:flex;
+}
+
+/* SIDEBAR */
+.sidebar{
+width:250px;
+height:100vh;
+background:linear-gradient(180deg,#0f9d58,#0a7d44);
+color:white;
+position:fixed;
+transition:.3s;
+}
+
+.sidebar.collapsed{
+width:70px;
+}
+
+.logo{
+padding:20px;
+font-size:20px;
+font-weight:600;
+text-align:center;
+border-bottom:1px solid rgba(255,255,255,.2);
+}
+
+.logo i{
+margin-right:10px;
+}
+
+.menu{
+list-style:none;
+}
+
+.menu li a{
+display:flex;
+align-items:center;
+padding:15px 20px;
+color:white;
+text-decoration:none;
+transition:.2s;
+}
+
+.menu li a:hover{
+background:rgba(255,255,255,.15);
+}
+
+.menu li i{
+width:25px;
+}
+
+.arrow{
+margin-left:auto;
+}
+
+.submenu{
+display:none;
+background:rgba(0,0,0,.1);
+}
+
+.menu li.open .submenu{
+display:block;
+}
+
+.submenu li a{
+padding-left:50px;
+font-size:14px;
+}
+
+.logout{
+position:absolute;
+bottom:20px;
+width:100%;
+text-align:center;
+}
+
+.logout a{
+color:white;
+text-decoration:none;
+border:1px solid white;
+padding:10px 20px;
+border-radius:5px;
+display:inline-block;
+}
+
+.logout a:hover{
+background:white;
+color:#0f9d58;
+}
+
+/* MAIN */
+.main{
+margin-left:250px;
+width:100%;
+transition:.3s;
+}
+
+.main.expanded{
+margin-left:70px;
+}
+
+/* TOPBAR */
+.topbar{
+height:60px;
+background:white;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 20px;
+box-shadow:0 2px 5px rgba(0,0,0,.1);
+}
+
+.menu-toggle{
+font-size:22px;
+cursor:pointer;
+color:#0f9d58;
+}
+
+.title{
+font-size:18px;
+font-weight:600;
+color:#0f9d58;
+}
+
+.user{
+color:#333;
+}
+
+/* CONTENT */
+.content{
+padding:20px;
+}
+
+/* responsive */
+@media(max-width:768px){
+
+.sidebar{
+left:-250px;
+}
+
+.sidebar.collapsed{
+left:0;
+width:250px;
+}
+
+.main{
+margin-left:0;
+}
+
+}
+
+
